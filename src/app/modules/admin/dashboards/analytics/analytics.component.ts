@@ -1,14 +1,19 @@
-import { DecimalPipe, NgFor } from '@angular/common';
+import {CommonModule, DecimalPipe, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
+import { NgbCalendar, NgbDateStruct, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AnalyticsService } from 'app/modules/admin/dashboards/analytics/analytics.service';
 import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
 import { Subject, takeUntil } from 'rxjs';
+
+
+
 
 @Component({
     selector       : 'analytics',
@@ -16,10 +21,13 @@ import { Subject, takeUntil } from 'rxjs';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone     : true,
-    imports        : [MatButtonModule, MatIconModule, MatMenuModule, MatButtonToggleModule, NgApexchartsModule, MatTooltipModule, NgFor, DecimalPipe],
+    imports        : [CommonModule, FormsModule, NgbModule, MatButtonModule, MatIconModule, MatMenuModule, MatButtonToggleModule, NgApexchartsModule, MatTooltipModule, NgFor, DecimalPipe],
 })
 export class AnalyticsComponent implements OnInit, OnDestroy
 {
+    fechaSeleccionada: NgbDateStruct;
+
+
     chartVisitors: ApexOptions;
     chartConversions: ApexOptions;
     chartImpressions: ApexOptions;
@@ -39,19 +47,21 @@ export class AnalyticsComponent implements OnInit, OnDestroy
     constructor(
         private _analyticsService: AnalyticsService,
         private _router: Router,
+        private calendar: NgbCalendar
     )
     {
+        this.fechaSeleccionada = this.calendar.getToday();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
+    onDateChange(newDate: NgbDateStruct) {
+        console.log(newDate);
+        // Puedes realizar acciones adicionales cuando la fecha cambia
+      }
 
-    /**
-     * On init
-     */
+
     ngOnInit(): void
     {
+
         // Get the data
         this._analyticsService.data$
             .pipe(takeUntil(this._unsubscribeAll))

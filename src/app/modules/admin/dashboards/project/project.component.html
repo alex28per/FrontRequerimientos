@@ -1,10 +1,11 @@
 <div class="relative overflow-x-auto mx-12 w-full ">
+    <h2 style="color:#4f46e5; font-weight: bold;" class="text-xl mt-4">LISTADO DE NORMAS</h2>
     <div class="text-end mt-5 mb-4">
     <button class="hidden sm:inline-flex ml-auto " mat-flat-button [color]="'primary'">
         <span>Nueva norma</span>
     </button>
     </div>
-    <table class="w-full  text-left rtl:text-right ">
+    <table class="w-full text-left rtl:text-right ">
         <thead class="text-base text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
@@ -28,21 +29,23 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" *ngFor="let datos of datosReq">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                    {{datos.id}}
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                    {{datos.nombre}}
+
                 </td>
                 <td class="px-6 py-4">
-                    Laptop
+                    {{datos.baselegal}}
+
                 </td>
                 <td class="px-6 py-4">
-                    $2999
+                    {{datos.organEmi}}
                 </td>
                 <td class="px-6 py-4">
-                    $2999
+                    {{datos.fechapub}}
                 </td>
                 <td class="px-6 py-4">
                     <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -50,41 +53,14 @@
                       </button>
 
                       <mat-menu #menu="matMenu">
-                        <button mat-menu-item>Option 1</button>
-                        <button mat-menu-item>Option 2</button>
-                        <button mat-menu-item>Option 3</button>
+                        <button mat-menu-item>Ver</button>
+                        <button mat-menu-item>Editar</button>
+                        <button mat-menu-item>Eliminar</button>
                       </mat-menu>
 
                 </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Microsoft Surface Pro
-                </th>
-                <td class="px-6 py-4">
-                    White
-                </td>
-                <td class="px-6 py-4">
-                    Laptop PC
-                </td>
-                <td class="px-6 py-4">
-                    $1999
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Magic Mouse 2
-                </th>
-                <td class="px-6 py-4">
-                    Black
-                </td>
-                <td class="px-6 py-4">
-                    Accessories
-                </td>
-                <td class="px-6 py-4">
-                    $99
-                </td>
-            </tr>
+
         </tbody>
     </table>
 

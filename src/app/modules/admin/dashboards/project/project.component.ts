@@ -9,10 +9,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslocoModule } from '@ngneat/transloco';
 import { ProjectService } from 'app/modules/admin/dashboards/project/project.service';
 import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
 import { Subject, takeUntil } from 'rxjs';
+
 
 @Component({
     selector       : 'project',
@@ -20,16 +22,14 @@ import { Subject, takeUntil } from 'rxjs';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone     : true,
-    imports        : [TranslocoModule, MatIconModule, MatButtonModule, MatRippleModule, MatMenuModule, MatTabsModule, MatButtonToggleModule, NgApexchartsModule, NgFor, NgIf, MatTableModule, NgClass, CurrencyPipe, MatTooltipModule],
+    imports        : [NgbModule, TranslocoModule, MatIconModule, MatButtonModule, MatRippleModule, MatMenuModule, MatTabsModule, MatButtonToggleModule, NgApexchartsModule, NgFor, NgIf, MatTableModule, NgClass, CurrencyPipe, MatTooltipModule],
 })
 export class ProjectComponent implements OnInit, OnDestroy
 {
-    tooltipOptions = ['Opción 1', 'Opción 2', 'Opción 3'];
-    selectedOption: string | undefined;
 
-    onSelect(option: string): void {
-      this.selectedOption = option;
-    }
+    datosReq : any[] = [
+        {id:1, nombre: 'Reglamento del Sistema Nacional', baselegal: 'Comercial Innovate S.A.C.',organEmi:'Ministerio del Ambiente', fechapub: '25/09/2009'}
+    ]
 
     chartGithubIssues: ApexOptions = {};
     chartTaskDistribution: ApexOptions = {};
