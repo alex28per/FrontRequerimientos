@@ -29,13 +29,39 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 icon : 'heroicons_outline:banknotes',
                 link : '/dashboards/finance',
             },
+      
+           
+        ],
+    },
+    {
+        id      : 'dashboards',
+        title   : 'REQUERIMIENTOS LEGALES',
+        type    : 'group',
+        icon    : 'heroicons_outline:home',
+        children: [
             {
-                id   : 'dashboards.crypto',
-                title: 'Pruebaaaaa',
+                id   : 'dashboards.dashboard',
+                title: 'Dashboard',
                 type : 'basic',
-                icon : 'heroicons_outline:currency-dollar',
-                link : '/dashboards/crypto',
+                icon : 'heroicons_outline:banknotes',
+                link : '/dashboards/dashboard',
             },
+            {
+                id   : 'dashboards.proyectos',
+                title: 'Proyectos',
+                type : 'basic',
+                icon : 'heroicons_outline:banknotes',
+                link : '/dashboards/proyectos',
+            },
+            {
+                id   : 'dashboards.plantillas',
+                title: 'Plantillas',
+                type : 'basic',
+                icon : 'heroicons_outline:banknotes',
+                link : '/dashboards/plantillas',
+            }
+            
+           
         ],
     },
     {
